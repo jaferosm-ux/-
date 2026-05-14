@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+
+<body>
+  
+</body>
+
+</html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصتي الدراسية - السمستر 5 و 6</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {--main:#059669;--bg:#f0fdf4;--card:#ffffff;--text:#0f172a;--border:#d1fae5;--whatsapp:#25D366;--pdf:#dc2626;--video:#ea580c;--link:#2563eb;--img:#7c3aed;--bankak:#004F9F;--orange:#f59e0b}
+        [data-theme="dark"] {--bg:#0f172a;--card:#1e293b;--text:#e2e8f0;--border:#334155}
+        *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma}
+        body{background:var(--bg);color:var(--text);transition:.3s}
+        .container{max-width:1300px;margin:auto;padding:20px}
+        .header{background:linear-gradient(135deg,var(--main),#047857);color:#fff;padding:35px;border-radius:20px;margin-bottom:25px;text-align:center;box-shadow:0 10px 30px rgba(5,150,105,0.3)}
+        .header h1{font-size:2.5rem;font-weight:900;margin-bottom:10px}
+        .header p{opacity:.95;font-size:17px}
+        .top-controls{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px;flex-wrap:wrap;gap:15px}
+        .btn{background:var(--main);color:#fff;padding:13px 24px;border:none;border-radius:12px;cursor:pointer;font-size:15px;font-weight:700;transition:.3s;display:inline-flex;align-items:center;gap:8px}
+        .btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(5,150,105,0.4)}
+        .btn-whatsapp{background:var(--whatsapp)}
+        .btn-red{background:var(--pdf)}
+        .btn-gray{background:#64748b}
+        .btn-bankak{background:var(--bankak)}
+        .btn-orange{background:var(--orange)}
+        .btn-green{background:var(--main)}
+        .sem-tabs{display:flex;gap:12px;margin-bottom:25px;background:var(--card);padding:10px;border-radius:16px;border:2px solid var(--border);box-shadow:0 4px 15px rgba(0,0,0,0.05)}
+        .sem-tab{flex:1;padding:18px;border-radius:12px;text-align:center;cursor:pointer;font-weight:900;font-size:17px;transition:.3s;border:2px solid transparent}
+        .sem-tab:hover{background:var(--bg)}
+        .sem-tab.active{background:var(--main);color:#fff;border-color:var(--main)}
+        .subjects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:22px}
+        .subject-card{background:var(--card);border-radius:18px;border:2px solid var(--border);overflow:hidden;transition:.4s;cursor:pointer}
+        .subject-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,0.15);border-color:var(--main)}
+        .subject-header{
+    background:linear-gradient(135deg,var(--main),#047857);
+    color:#fff;
+    padding:28px;
+    padding-left:75px;
+    position:relative;
+}
+        .subject-num{position:absolute;top:18px;left:18px;background:#fff3;width:45px;height:45px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px}
+        .subject-name{font-size:1.5rem;font-weight:900;margin-bottom:10px}
+        .subject-count{font-size:14px;opacity:.95}
+        .subject-body{padding:22px}
+        .stats-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:18px}
+        .stat-box{text-align:center;padding:12px;background:var(--bg);border-radius:10px}
+        .stat-val{font-size:1.6rem;font-weight:900;color:var(--main)}
+        .stat-lab{font-size:11px;opacity:.7;margin-top:4px}
+        .modal{position:fixed;inset:0;background:#0009;display:none;align-items:center;justify-content:center;padding:15px;z-index:1000;backdrop-filter:blur(8px)}
+        .modal.show{display:flex}
+        .modal-box{background:var(--card);padding:35px;border-radius:24px;width:100%;max-width:950px;max-height:90vh;overflow-y:auto;border:2px solid var(--border)}
+        .modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px;padding-bottom:18px;border-bottom:2px solid var(--border)}
+        .close-btn{background:var(--bg);border:none;width:42px;height:42px;border-radius:12px;color:var(--text);font-size:22px;cursor:pointer}
+        .res-tabs{display:flex;gap:10px;margin:20px 0;flex-wrap:wrap}
+        .res-tab{padding:14px 22px;background:var(--bg);border-radius:12px;cursor:pointer;border:2px solid var(--border);font-weight:700;transition:.3s}
+        .res-tab:hover{border-color:var(--main)}
+        .res-tab.active{background:var(--main);border-color:var(--main);color:#fff}
+        .res-content{display:none}
+        .res-content.active{display:block}
+        .res-item{background:var(--bg);padding:20px;border-radius:15px;margin:14px 0;display:flex;align-items:center;gap:16px;border:2px solid var(--border);transition:.3s}
+        .res-item:hover{border-color:var(--main);transform:translateX(-5px)}
+        .res-icon{width:55px;height:55px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;color:#fff;flex-shrink:0}
+        .res-icon.pdf{background:var(--pdf)}
+        .res-icon.video{background:var(--video)}
+        .res-icon.image{background:var(--img)}
+        .res-icon.link{background:var(--link)}
+        .res-icon.audio{background:var(--orange)}
+        .res-info{flex:1}
+        .res-title{font-weight:800;margin-bottom:6px;font-size:16px}
+        .res-desc{font-size:13px;opacity:.7}
+        .res-btn{width:42px;height:42px;border-radius:11px;border:none;cursor:pointer;font-size:18px;background:var(--main);color:#fff;transition:.3s}
+        .res-btn:hover{transform:scale(1.1)}
+        .admin-box{background:var(--card);padding:28px;border-radius:18px;margin:20px 0;border:2px solid var(--border)}
+        input,textarea,select{width:100%;padding:15px;margin:10px 0;background:var(--bg);border:2px solid var(--border);color:var(--text);border-radius:12px;font-size:16px;transition:.3s}
+        input:focus,textarea:focus{outline:none;border-color:var(--main)}
+        .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+        .floating-whatsapp{position:fixed;bottom:30px;left:30px;background:var(--whatsapp);color:#fff;width:68px;height:68px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:34px;z-index:999;box-shadow:0 8px 30px rgba(37,211,102,0.5);animation:pulse 2s infinite;text-decoration:none}
+        @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+        .toast{position:fixed;top:30px;left:50%;transform:translateX(-50%);background:var(--main);color:#fff;padding:18px 35px;border-radius:14px;display:none;z-index:1001;font-weight:700;box-shadow:0 10px 30px rgba(0,0,0,0.3)}
+        .toast.error{background:var(--pdf)}
+        .empty{text-align:center;padding:70px 20px;opacity:.5}
+        .theme-btn{background:var(--card);border:2px solid var(--border);width:50px;height:50px;border-radius:13px;cursor:pointer;font-size:21px;color:var(--text)}
+        ..login-screen{
+  position:fixed;
+  inset:0;
+  background:linear-gradient(135deg,var(--main),#047857);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index: 3000; /* كان 2000، غيرو لـ 3000 */
+}
+        ....login-box{
+  background:var(--card);
+  padding:40px;
+  border-radius:24px;
+  width:100%;
+  max-width:450px;
+  margin:0 auto; /* يخليه في النص */
+  box-shadow:0 20px 60px rgba(0,0,0,0.3);
+  max-height: 88vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+  
+  max-height: 88vh;
+  overflow-y: auto;
+  overflow-x: hidden;  /* مهم عشان ما يتمدد أفقياً */
+  box-sizing: border-box;  /* مهم عشان البادينغ ما يزيد العرض */
+}
+/* عشان الهيدر ما يختفي مع السكرول */
+.login-box .logo{
+  position: sticky;
+  top: 0;
+  background: var(--card);
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  z-index: 2;
+}
+
+/* خلي الزر يظهر أوضح */
+#registerForm .btn-green{
+  margin-top: 20px;
+  position: sticky;
+  bottom: -1px;
+  background: var(--main);
+  z-index: 2;
+}
+        .logo{text-align:center;margin-bottom:30px}
+        .logo i{font-size:70px;color:var(--main);margin-bottom:15px}
+        .logo h1{font-size:2rem;font-weight:900;color:var(--main)}
+        .payment-box{background:var(--bg);padding:25px;border-radius:15px;margin:20px 0;border:2px solid var(--bankak)}
+        .bank-info{background:var(--card);padding:18px;border-radius:12px;margin:15px 0;font-family:monospace;border:2px solid var(--border)}
+        .user-bar{background:var(--card);padding:15px;border-radius:15px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;border:2px solid var(--border)}
+        .user-info{display:flex;align-items:center;gap:12px}
+        .user-avatar{width:45px;height:45px;border-radius:50%;background:var(--main);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900}
+        .status-badge{padding:6px 14px;border-radius:8px;font-size:12px;font-weight:700}
+        .status-active{background:var(--main);color:#fff}
+        .status-pending{background:var(--orange);color:#fff}
+        .admin-badge{background:var(--bankak);color:#fff;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:700;margin-right:8px}
+        .user-item{background:var(--bg);padding:18px;border-radius:14px;margin:12px 0;border:2px solid var(--border)}
+        .user-item-header{display:flex;justify-content:space-between;align-items:start;margin-bottom:10px}
+        .user-actions{display:flex;gap:8px;margin-top:12px}
+        .user-actions button{flex:1;padding:10px;font-size:14px}
+        .admin-tabs{display:flex;gap:10px;margin-bottom:20px}
+        .admin-tab-btn{flex:1;padding:14px;background:#64748b;color:#fff;border:none;border-radius:12px;font-weight:700;cursor:pointer;transition:.3s}
+        .admin-tab-btn.active{background:var(--main)}
+        @media(max-width:768px){.subjects-grid{grid-template-columns:1fr}.header h1{font-size:1.8rem}.stats-grid{grid-template-columns:repeat(2,1fr)}.form-grid{grid-template-columns:1fr}}
+    </style>
+</head>
+<body>
+    <div class="login-screen" id="loginScreen">
+        <div class="login-box">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <h1>منصتي الدراسية</h1>
+                <p style="opacity:.7;margin-top:10px">السمستر الخامس والسادس</p>
+            </div>
+            <div id="loginForm">
+                <h3 style="margin-bottom:20px;text-align:center">تسجيل الدخول</h3>
+                <input type="text" id="loginPhone" placeholder="رقم الهاتف أو اسم المستخدم">
+                <input type="password" id="loginPassword" placeholder="كلمة المرور">
+                <button class="btn" onclick="login()" style="width:100%"><i class="fas fa-sign-in-alt"></i> دخول</button>
+                <p style="text-align:center;margin:20px 0;opacity:.6">أو</p>
+                <button class="btn btn-gray" onclick="showRegister()" style="width:100%"><i class="fas fa-user-plus"></i> حساب جديد</button>
+            </div>
+
+            <div id="registerForm" style="display:none">
+                <h3 style="margin-bottom:20px;text-align:center">تسجيل حساب جديد</h3>
+                <input type="text" id="regName" placeholder="الاسم الكامل *">
+                <input type="text" id="regPhone" placeholder="رقم الهاتف 249xxx *">
+                <input type="password" id="regPassword" placeholder="كلمة المرور *">
+                <input type="password" id="regPassword2" placeholder="تأكيد كلمة المرور *">
+                <div class="payment-box">
+                    <div style="text-align:center;margin-bottom:15px">
+                        <i class="fas fa-university" style="font-size:40px;color:var(--bankak);margin-bottom:10px"></i>
+                        <h4>رسوم التسجيل: 5,000 جنيه</h4>
+                        <p style="font-size:13px;opacity:.7;margin-top:5px">الدفع عبر بنك للوصول لكل المواد</p>
+                    </div>
+                    <div class="bank-info">
+                        <div style="margin-bottom:8px"><strong>رقم الحساب:</strong> 8318250</div>
+                        <div style="margin-bottom:8px"><strong>الاسم:</strong> منصة الدراسة</div>
+                        <div><strong>المبلغ:</strong> 5,000 جنيه</div>
+                        <button class="btn btn-bankak" onclick="copyBankInfo()" style="width:100%;margin-top:12px"><i class="fas fa-copy"></i> نسخ بيانات الدفع</button>
+                    </div>
+                    <input type="text" id="regTransId" placeholder="رقم العملية من إشعار بنك *">
+                </div>
+                <button class="btn btn-green" onclick="register()" style="width:100%"><i class="fas fa-check"></i> تسجيل الحساب</button>
+                <button class="btn btn-gray" onclick="showLogin()" style="width:100%;margin-top:10px"><i class="fas fa-arrow-right"></i> رجوع للدخول</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="mainContent" style="display:none">
+        <div class="user-bar">
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar">ط</div>
+                <div>
+                    <div style="font-weight:800" id="userName">طالب</div>
+                    <div style="font-size:12px;opacity:.7" id="userPhone"></div>
+                </div>
+            </div>
+            <div style="display:flex;gap:10px;align-items:center">
+                <span id="adminBadge" style="display:none" class="admin-badge"><i class="fas fa-crown"></i> أدمن</span>
+                <span class="status-badge status-active" id="userStatus">مفعل</span>
+                <button class="theme-btn" onclick="toggleTheme()" title="الوضع الليلي"><i class="fas fa-moon" id="themeIcon"></i></button>
+                <button class="btn btn-orange" onclick="openChangePassModal()" style="margin-left:8px">
+                   <i class="fas fa-key"></i> تغيير كلمة السر
+                </button>
+                <button class="btn btn-whatsapp" onclick="openUserMessages()" style="padding:10px 15px">
+                    <i class="fas fa-envelope"></i> الرسائل
+                    <span id="msgBadge" style="background:red; color:#fff; padding:2px 6px; border-radius:50%; font-size:12px; display:none;">0</span>
+                </button>
+                <button class="btn btn-red btn-gray" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> خروج
+                </button>
+            </div>
+        </div>
+
+        <div class="top-controls">
+            <button class="btn btn-gray" onclick="requestAdminAccess()" id="adminBtn" style="display:none"><i class="fas fa-user-shield"></i> وضع الإدارة</button>
+            <!-- عدلت دا لرابط القروب -->
+            <a href="https://chat.whatsapp.com/Hh6Ey0UlpZd4jbD2jWl1lV?mode=gi_t" class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> قروب الواتساب</a>
+        </div>
+
+        <div class="header">
+            <h1><i class="fas fa-graduation-cap"></i> منصتي الدراسية</h1>
+            <p>السمستر الخامس والسادس - كل المحاضرات والمراجع والشروحات</p>
+        </div>
+
+        <div class="sem-tabs">
+            <div class="sem-tab active" onclick="switchSemester(5)">
+                <i class="fas fa-book"></i> السمستر الخامس - 9 مواد
+            </div>
+            <div class="sem-tab" onclick="switchSemester(6)">
+                <i class="fas fa-book-open"></i> السمستر السادس - 7 مواد
+            </div>
+        </div>
+
+        <div class="admin-box" id="adminPanel" style="display:none">
+            <div class="admin-tabs">
+                <button class="admin-tab-btn active" id="contentTabBtn" onclick="showAdminTab('content')"><i class="fas fa-plus-circle"></i> إضافة محتوى</button>
+                <button class="admin-tab-btn" id="usersTabBtn" onclick="showAdminTab('users')"><i class="fas fa-users"></i> إدارة الطلاب <span id="pendingBadge" style="background:var(--orange);color:#fff;padding:2px 8px;border-radius:6px;margin-right:5px;font-size:12px;display:none">0</span></button>
+            </div>
+
+            <div id="adminContentTab">
+                <h3 style="margin-bottom:20px"><i class="fas fa-plus-circle"></i> إضافة محتوى دراسي</h3>
+                <button class="btn btn-main" onclick="openSendMsgModal()" style="margin-bottom:15px; width:100%;">
+                    <i class="fas fa-paper-plane"></i> إرسال رسالة لطالب
+                </button>
+                <div class="form-grid">
+                    <select id="addSem">
+                        <option value="5">السمستر الخامس</option>
+                        <option value="6">السمستر السادس</option>
+                    </select>
+                    <select id="addSubject"></select>
+                </div>
+                <div class="form-grid">
+                    <select id="addType">
+                        <option value="pdf">PDF - ملف</option>
+                        <option value="video">فيديو - محاضرة</option>
+                        <option value="image">صورة - مخط</option>
+                        <option value="link">رابط - مرجع</option>
+                        <option value="audio">صوت - محاضرة صوتية</option>
+                    </select>
+                    <input type="text" id="addTitle" placeholder="عنوان المحتوى *">
+                </div>
+                <input type="url" id="addUrl" placeholder="رابط الملف / الفيديو / الصوت *">
+                <textarea id="addDesc" placeholder="وصف مختصر للمحتوى" rows="2"></textarea>
+                <button class="btn" onclick="addResource()" style="width:100%"><i class="fas fa-plus"></i> إضافة المحتوى</button>
+            </div>
+
+            <div id="adminUsersTab" style="display:none">
+                <h3 style="margin-bottom:20px"><i class="fas fa-users"></i> إدارة الطلاب</h3>
+                <div id="usersList"></div>
+            </div>
+        </div>
+
+        <div class="subjects-grid" id="subjectsGrid"></div>
+    </div>
+
+    <!-- خليت دا برقمك الشخصي زي ما طلبت -->
+    <a href="https://wa.me/249918445750?text=مرحبا، عندي استفسار عن المواد الدراسية" class="floating-whatsapp"><i class="fab fa-whatsapp"></i></a>
+
+    <div class="modal" id="subjectModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2 id="modalSubjectName"></h2>
+                <div>
+                    <button class="btn btn-gray" onclick="closeModal('subjectModal')" style="margin-left:8px">
+                        <i class="fas fa-home"></i> رجوع
+                    </button>
+                    <button class="close-btn" onclick="closeModal('subjectModal')"><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+
+            <div class="res-tabs">
+                <div class="res-tab active" onclick="switchResTab('pdf')"><i class="fas fa-file-pdf"></i> PDF</div>
+                <div class="res-tab" onclick="switchResTab('video')"><i class="fas fa-video"></i> فيديوهات</div>
+                <div class="res-tab" onclick="switchResTab('image')"><i class="fas fa-image"></i> صور</div>
+                <div class="res-tab" onclick="switchResTab('link')"><i class="fas fa-link"></i> روابط</div>
+                <div class="res-tab" onclick="switchResTab('audio')"><i class="fas fa-music"></i> صوت</div>
+            </div>
+
+            <div class="res-content active" id="pdfContent"></div>
+            <div class="res-content" id="videoContent"></div>
+            <div class="res-content" id="imageContent"></div>
+            <div class="res-content" id="linkContent"></div>
+            <div class="res-content" id="audioContent"></div>
+        </div>
+    </div>
+
+    <div class="modal" id="adminPassModal">
+        <div class="modal-box" style="max-width:400px">
+            <div class="modal-header">
+                <h3><i class="fas fa-lock"></i> كلمة سر الإدارة</h3>
+                <button class="close-btn" onclick="closeModal('adminPassModal')"><i class="fas fa-times"></i></button>
+            </div>
+            <input type="password" id="adminPassword" placeholder="أدخل كلمة السر">
+            <button class="btn btn-bankak" onclick="verifyAdminPass()" style="width:100%"><i class="fas fa-key"></i> تأكيد</button>
+        </div>
+    </div>
+
+    <div class="modal" id="changePassModal">
+        <div class="modal-box" style="max-width:400px">
+            <div class="modal-header">
+                <h3><i class="fas fa-key"></i> تغيير كلمة السر</h3>
+                <button class="close-btn" onclick="closeModal('changePassModal')"><i class="fas fa-times"></i></button>
+            </div>
+            <input type="password" id="oldPass" placeholder="كلمة السر القديمة">
+            <input type="password" id="newPass" placeholder="كلمة السر الجديدة">
+            <input type="password" id="newPass2" placeholder="تأكيد كلمة السر الجديدة">
+            <button class="btn btn-green" onclick="changePassword()" style="width:100%">
+                <i class="fas fa-save"></i> حفظ
+            </button>
+        </div>
+    </div>
+
+    <div class="modal" id="userMessagesModal">
+        <div class="modal-box" style="max-width:600px;">
+            <div class="modal-header">
+                <h3><i class="fas fa-envelope"></i> رسائل الأدمن</h3>
+                <button class="close-btn" onclick="closeModal('userMessagesModal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div id="userMessagesList" style="max-height:400px; overflow-y:auto;"></div>
+        </div>
+    </div>
+
+    <div class="modal" id="sendMsgModal">
+        <div class="modal-box" style="max-width:500px;">
+            <div class="modal-header">
+                <h3><i class="fas fa-paper-plane"></i> إرسال رسالة لطالب</h3>
+                <button class="close-btn" onclick="closeModal('sendMsgModal')"><i class="fas fa-times"></i></button>
+            </div>
+            <select id="selectUser" style="width:100%; margin-bottom:10px;">
+                <option value="">اختر الطالب</option>
+            </select>
+            <textarea id="adminMsgText" placeholder="اكتب الرسالة هنا..." rows="4" style="width:100%; margin-bottom:10px;"></textarea>
+            <button class="btn btn-green" onclick="sendMsgToUser()" style="width:100%;">
+                <i class="fas fa-paper-plane"></i> إرسال
+            </button>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+<script>
+const WHATSAPP = "249918445750";
+const REGISTRATION_FEE = 5000;
+const BANK_ACCOUNT = "1234567";
+const BANK_NAME = "منصة الدراسة";
+const ADMIN_PASSWORD = "2001";
+let currentUser = null;
+let currentSem = 5;
+let currentSubject = null;
+let currentResType = 'pdf';
+let isAdmin = false;
+let adminAccessGranted = false;
+
+const sem5 = [
+    {id: 1, name: "محاسبة الضرائب", resources: {pdf:[],video:[],image:[],link:[],audio:[]}},
+    {id: 2, name: "محاسبة المصارف", resources: {pdf:[],video:[],image:[],link:[],audio:[]}},
+    {id: 3, name: "المحاسبة المتقدمة ١", resources: {pdf:[],video:[],image:[],link:[],audio:[]}},
+    {id: 4, name: "المحاسبة الادارية", resources: {pdf:[],video:[],image:[],link:[],audio:[]}},
+    {id: 5, name: "اخلاقيات العمل", resources: {pdf:[],video:[],image:[],link:[],audio:[]}},
+    {id: 6, name: "المؤسسات المالية", resources: {pdf:[],video:[],image:[],link:[],audio:[]}},
+    {id: 7, name: "اصول الفقه", resources: {pdf:[],video:[],image:[],link:[],audio:[]}},
+    {id: 8, name: "الحديث وعلومه", resources: {pdf:[],video:[],image:[],link:[],audio:[]}},
+    {id: 9, name: "القران الكريم", resources: {pdf:[],video:[],image:[],link:[],audio:[]}}
+];
+
+const sem6 = [
+    {id: 10, name: "محاسبة شركات التأمين", resources: {pdf:[],video:[],image:[],link:[],audio:[]}},
+    {id: 11, name: "المحاسبة الدولية", resources: {pdf:[],video:[],image:[],link:[],audio:[]}},
+    {id: 12, name: "محاسبة الذكاء", resources: {pdf:[],video:[],image:[],link:[],audio:[]}},
+    {id: 13, name: "المحاسبة المتقدمة ٢", resources: {pdf:[],video:[],image:[],link:[],audio:[]}},
+    {id: 14, name: "لغة انجليزية لاغراض العمل", resources: {pdf:[],video:[],image:[],link:[],audio:[]}},
+    {id: 15, name: "طرق البحث العلمي", resources: {pdf:[],video:[],image:[],link:[],audio:[]}},
+    {id: 16, name: "الدعوة الاسلامية", resources: {pdf:[],video:[],image:[],link:[],audio:[]}}
+];
+
+let data = {sem5: sem5, sem6: sem6, users: []};
+
+const ADMIN_USER = {
+    id: 999,
+    name: "jfr",
+    phone: "jfr",
+    password: "2001",
+    transId: "ADMIN",
+    status: 'active',
+    isAdmin: true,
+    regDate: new Date().toISOString(),
+    messages: []
+};
+
+const USER_ABC = {
+    id: 1000,
+    name: "ABC",
+    phone: "ABC",
+    password: "123",
+    transId: "MANUAL",
+    status: 'active',
+    isAdmin: false,
+    regDate: new Date().toISOString(),
+    messages: []
+};
+
+function loadData(){
+    try {
+        const saved = localStorage.getItem('study_platform_v2');
+        if(saved) {
+            const parsed = JSON.parse(saved);
+            data.users = parsed.users || [];
+            data.users.forEach(u => {if(!u.messages) u.messages = []});
+        }
+        
+        data.sem5 = sem5;
+        data.sem6 = sem6;
+        
+        if(!data.users.find(u => u.phone === 'jfr')) {
+            data.users.unshift(ADMIN_USER);
+        }
+        
+        if(!data.users.find(u => u.phone === 'ABC')) {
+            data.users.push(USER_ABC);
+        }
+        
+        saveData();
+        checkLogin();
+    } catch(e) { 
+        console.error(e);
+        showLoginScreen();
+    }
+    
+    renderSubjects();
+    updateAdminSubjects();
+    loadTheme();
+    updatePendingBadge();
+}
+
+function saveData(){
+    try {
+        localStorage.setItem('study_platform_v2', JSON.stringify(data));
+        updatePendingBadge();
+    } catch(e) { console.error(e); }
+}
+
+function updatePendingBadge(){
+    const pendingCount = data.users.filter(u => u.status === 'pending').length;
+    const badge = document.getElementById('pendingBadge');
+    if(badge){
+        badge.style.display = pendingCount > 0 ? 'inline' : 'none';
+        badge.innerText = pendingCount;
+    }
+}
+
+function checkLogin(){
+    try {
+        const session = localStorage.getItem('study_session');
+        if(session){
+            currentUser = JSON.parse(atob(session));
+            const userCheck = data.users.find(u => u.id === currentUser.id);
+            if(!userCheck || userCheck.status !== 'active'){
+                localStorage.removeItem('study_session');
+                showLoginScreen();
+                showToast('انتهت جلستك. سجل دخول مرة تانية', 'error');
+                return;
+            }
+            currentUser = userCheck;
+            showMainContent();
+            requestNotificationPermission();
+        } else {
+            showLoginScreen();
+        }
+    } catch(e) {
+        showLoginScreen();
+        updateMsgBadge();
+    }
+}
+
+function showLogin(){
+    document.getElementById('loginForm').style.display = 'block';
+    document.getElementById('registerForm').style.display = 'none';
+}
+
+function showRegister(){
+    document.getElementById('loginForm').style.display = 'none';
+    document.getElementById('registerForm').style.display = 'block';
+}
+
+function showLoginScreen(){
+    document.getElementById('loginScreen').style.display = 'flex';
+    document.getElementById('mainContent').style.display = 'none';
+}
+
+function showMainContent(){
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('mainContent').style.display = 'block';
+    document.getElementById('userName').innerText = currentUser.name;
+    document.getElementById('userPhone').innerText = currentUser.phone;
+    document.getElementById('userAvatar').innerText = currentUser.name.charAt(0).toUpperCase();
+
+    if(currentUser.isAdmin === true) {
+        document.getElementById('adminBtn').style.display = 'inline-flex';
+        document.getElementById('adminBadge').style.display = 'inline-block';
+        isAdmin = true;
+    } else {
+        document.getElementById('adminBtn').style.display = 'none';
+        document.getElementById('adminBadge').style.display = 'none';
+        isAdmin = false;
+    }
+    
+    updateMsgBadge();
+}
+
+function login(){
+    const phone = document.getElementById('loginPhone').value.trim();
+    const password = document.getElementById('loginPassword').value;
+
+    if(!phone || !password){
+        showToast('املا اسم المستخدم وكلمة المرور', 'error');
+        return;
+    }
+
+    const user = data.users.find(u => (u.phone === phone || u.name === phone) && u.password === password);
+
+    if(!user){
+        showToast('اسم المستخدم أو كلمة المرور غير صحيحة', 'error');
+        return;
+    }
+
+    if(user.status === 'pending'){
+        showToast('حسابك قيد المراجعة. انتظر تفعيل الإدارة بعد تأكيد الدفع', 'error');
+        return;
+    }
+
+    if(user.status !== 'active'){
+        showToast('حسابك موقوف. تواصل مع الإدارة', 'error');
+        return;
+    }
+
+    currentUser = user;
+    localStorage.setItem('study_session', btoa(JSON.stringify(user)));
+    showMainContent();
+    showToast('مرحباً ' + user.name + ' 👋');
+}
+
+function register(){
+    const btn = document.querySelector('#registerForm .btn-green');
+    try{
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري معالجة طلبك...';
+
+        const name = document.getElementById('regName').value.trim();
+        const phone = document.getElementById('regPhone').value.trim();
+        const password = document.getElementById('regPassword').value;
+        const password2 = document.getElementById('regPassword2').value;
+        const transId = document.getElementById('regTransId').value.trim();
+
+        if(!name || !phone || !password || !transId){
+            showToast('املا كل الحقول المطلوبة *', 'error');
+            throw new Error('validation');
+        }
+
+        if(password !== password2){
+            showToast('كلمة المرور غير متطابقة', 'error');
+            throw new Error('validation');
+        }
+
+        if(data.users.find(u => u.phone === phone)){
+            showToast('رقم الهاتف مسجل مسبقاً', 'error');
+            throw new Error('validation');
+        }
+
+        const newUser = {
+            id: Date.now(),
+            name: name,
+            phone: phone,
+            password: password,
+            transId: transId,
+            status: 'pending',
+            isAdmin: false,
+            regDate: new Date().toISOString(),
+            messages: []
+        };
+
+        data.users.push(newUser);
+        saveData();
+
+        showToast('تم التسجيل! حسابك قيد المراجعة ✅');
+
+        setTimeout(() => {
+            document.getElementById('regName').value = '';
+            document.getElementById('regPhone').value = '';
+            document.getElementById('regPassword').value = '';
+            document.getElementById('regPassword2').value = '';
+            document.getElementById('regTransId').value
+                        document.getElementById('registerForm').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('loginPhone').value = phone;
+
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fas fa-check"></i> تسجيل الحساب';
+        }, 1500);
+
+    }catch(e){
+        if(e.message!== 'validation'){
+            console.error("Register Error:", e);
+            showToast('حصل خطأ غير متوقع، جرب تاني', 'error');
+        }
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-check"></i> تسجيل الحساب';
+    }
+}
+
+function openUserMessages(){
+    document.getElementById('userMessagesModal').classList.add('show');
+    renderUserMessages();
+    markMessagesAsRead();
+}
+
+function renderUserMessages(){
+    const container = document.getElementById('userMessagesList');
+    const msgs = currentUser.messages || [];
+
+    if(!msgs.length){
+        container.innerHTML = '<div class="empty">لا توجد رسائل</div>';
+        return;
+    }
+
+    container.innerHTML = msgs.slice().reverse().map(m => `
+        <div style="background:var(--bg); padding:15px; border-radius:12px; margin-bottom:10px;">
+            <div style="color:var(--text); margin-bottom:5px;">${m.text}</div>
+            <div style="font-size:12px; color:var(--muted);">
+                ${new Date(m.date).toLocaleString('ar-EG')}
+            </div>
+        </div>
+    `).join('');
+}
+
+function markMessagesAsRead(){
+    currentUser.messages = (currentUser.messages || []).map(m => ({...m, read:true}));
+    updateUserInData();
+    updateMsgBadge();
+}
+
+function updateMsgBadge(){
+    const unread = (currentUser.messages || []).filter(m =>!m.read).length;
+    const badge = document.getElementById('msgBadge');
+    if(badge){
+        badge.innerText = unread;
+        badge.style.display = unread > 0? 'inline' : 'none';
+    }
+}
+
+function openSendMsgModal(){
+    document.getElementById('sendMsgModal').classList.add('show');
+    renderUserSelect();
+}
+
+function renderUserSelect(){
+    const select = document.getElementById('selectUser');
+    const users = data.users.filter(u =>!u.isAdmin && u.status === 'active');
+    select.innerHTML = '<option value="">اختر الطالب</option>' +
+        users.map(u => `<option value="${u.id}">${u.name} - ${u.phone}</option>`).join('');
+}
+
+function sendMsgToUser(){
+    const userId = parseInt(document.getElementById('selectUser').value);
+    const text = document.getElementById('adminMsgText').value.trim();
+
+    if(!userId){
+        showToast('اختر طالب أولاً', 'error');
+        return;
+    }
+    if(!text){
+        showToast('اكتب الرسالة', 'error');
+        return;
+    }
+
+    const user = data.users.find(u => u.id === userId);
+    if(!user) return;
+
+    if(!user.messages) user.messages = [];
+
+    user.messages.push({
+        text: text,
+        date: new Date().toISOString(),
+        read: false
+    });
+
+    saveData();
+    showToast(`تم إرسال الرسالة لـ ${user.name} ✅`);
+    document.getElementById('adminMsgText').value = '';
+    closeModal('sendMsgModal');
+}
+
+function updateUserInData(){
+    const idx = data.users.findIndex(u => u.id === currentUser.id);
+    if(idx!== -1){
+        data.users[idx] = currentUser;
+        saveData();
+    }
+}
+
+function logout(){
+    if(!confirm('متأكد عايز تطلع؟')) return;
+    localStorage.removeItem('study_session');
+    currentUser = null;
+    isAdmin = false;
+    adminAccessGranted = false;
+    showLoginScreen();
+    showLogin();
+}
+
+function openChangePassModal(){
+    document.getElementById('changePassModal').classList.add('show');
+    document.getElementById('oldPass').value = '';
+    document.getElementById('newPass').value = '';
+    document.getElementById('newPass2').value = '';
+}
+
+function changePassword(){
+    const oldPass = document.getElementById('oldPass').value;
+    const newPass = document.getElementById('newPass').value;
+    const newPass2 = document.getElementById('newPass2').value;
+
+    if(!oldPass ||!newPass ||!newPass2){
+        showToast('املا كل الحقول', 'error');
+        return;
+    }
+
+    if(oldPass!== currentUser.password){
+        showToast('كلمة السر القديمة غلط', 'error');
+        return;
+    }
+
+    if(newPass!== newPass2){
+        showToast('كلمة السر الجديدة غير متطابقة', 'error');
+        return;
+    }
+
+    if(newPass.length < 4){
+        showToast('كلمة السر لازم 4 أحرف على الأقل', 'error');
+        return;
+    }
+
+    const userIndex = data.users.findIndex(u => u.id === currentUser.id);
+    if(userIndex!== -1){
+        data.users[userIndex].password = newPass;
+        currentUser.password = newPass;
+        localStorage.setItem('study_session', btoa(JSON.stringify(currentUser)));
+        saveData();
+        closeModal('changePassModal');
+        showToast('تم تغيير كلمة السر بنجاح ✅');
+    }
+}
+
+function copyBankInfo(){
+    const text = `رقم الحساب: ${BANK_ACCOUNT}\nالاسم: ${BANK_NAME}\nالمبلغ: ${REGISTRATION_FEE} جنيه`;
+    navigator.clipboard.writeText(text);
+    showToast('تم نسخ بيانات الدفع ✅');
+}
+
+function requestAdminAccess(){
+    if(adminAccessGranted){
+        toggleAdmin();
+    } else {
+        document.getElementById('adminPassModal').classList.add('show');
+        document.getElementById('adminPassword').value = '';
+        document.getElementById('adminPassword').focus();
+    }
+}
+
+function verifyAdminPass(){
+    const pass = document.getElementById('adminPassword').value;
+    if(pass === ADMIN_PASSWORD){
+        adminAccessGranted = true;
+        closeModal('adminPassModal');
+        toggleAdmin();
+        showToast('تم تفعيل وضع الإدارة ✅');
+    } else {
+        showToast('كلمة السر غير صحيحة', 'error');
+    }
+}
+
+function switchSemester(sem){
+    currentSem = sem;
+    document.querySelectorAll('.sem-tab').forEach((t,i)=>{
+        t.classList.toggle('active', (i===0 && sem===5) || (i===1 && sem===6));
+    });
+    renderSubjects();
+    updateAdminSubjects();
+}
+
+function renderSubjects(){
+    const subjects = currentSem === 5? data.sem5 : data.sem6;
+    document.getElementById('subjectsGrid').innerHTML = subjects.map(sub => {
+        const c = sub.resources;
+        const counts = {pdf: c.pdf.length, video: c.video.length, image: c.image.length, link: c.link.length, audio: c.audio.length};
+        const total = counts.pdf + counts.video + counts.image + counts.link + counts.audio;
+
+        return `
+            <div class="subject-card" onclick="openSubject(${sub.id})">
+                <div class="subject-header">
+                    <div class="subject-num">${sub.id}</div>
+                    <div class="subject-name">${sub.name}</div>
+                    <div class="subject-count">${total} ملف دراسي</div>
+                </div>
+                <div class="subject-body">
+                    <div class="stats-grid">
+                        <div class="stat-box"><div class="stat-val">${counts.pdf}</div><div class="stat-lab">PDF</div></div>
+                        <div class="stat-box"><div class="stat-val">${counts.video}</div><div class="stat-lab">فيديو</div></div>
+                        <div class="stat-box"><div class="stat-val">${counts.image}</div><div class="stat-lab">صور</div></div>
+                        <div class="stat-box"><div class="stat-val">${counts.link}</div><div class="stat-lab">روابط</div></div>
+                        <div class="stat-box"><div class="stat-val">${counts.audio}</div><div class="stat-lab">صوت</div></div>
+                    </div>
+                    <button class="btn" style="width:100%"><i class="fas fa-folder-open"></i> فتح المادة</button>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+function openSubject(id){
+    const subjects = currentSem === 5? data.sem5 : data.sem6;
+    currentSubject = subjects.find(s => s.id === id);
+    if(!currentSubject) return;
+
+    document.getElementById('modalSubjectName').innerText = currentSubject.name;
+    document.getElementById('subjectModal').classList.add('show');
+    switchResTab('pdf');
+}
+
+function switchResTab(type){
+    currentResType = type;
+    document.querySelectorAll('.res-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.res-content').forEach(c => c.classList.remove('active'));
+    event.target.classList.add('active');
+    document.getElementById(type + 'Content').classList.add('active');
+    renderResources();
+}
+
+function renderResources(){
+    if(!currentSubject) return;
+    const resources = currentSubject.resources[currentResType] || [];
+    const content = document.getElementById(currentResType + 'Content');
+
+    if(!resources.length){
+        content.innerHTML = '<div class="empty"><i class="fas fa-folder-open"></i><br><h3>لا يوجد محتوى بعد</h3><p>استخدم وضع الإدارة لإضافة ملفات</p></div>';
+        return;
+    }
+
+    const icons = {pdf:'file-pdf', video:'video', image:'image', link:'link', audio:'music'};
+    const colors = {pdf:'pdf', video:'video', image:'image', link:'link', audio:'audio'};
+
+    if(currentResType === 'audio'){
+        content.innerHTML = resources.map((res,idx) => `
+            <div class="res-item">
+                <div class="res-icon ${colors[currentResType]}"><i class="fas fa-${icons[currentResType]}"></i></div>
+                <div class="res-info">
+                    <div class="res-title">${res.title}</div>
+                    <div class="res-desc">${res.desc || 'بدون وصف'}</div>
+                    <audio controls src="${res.url}" style="width:100%;margin-top:8px;"></audio>
+                </div>
+                ${isAdmin? `<button class="res-btn" style="background:var(--pdf)" onclick="deleteResource(${idx})" title="حذف"><i class="fas fa-trash"></i></button>` : ''}
+            </div>
+        `).join('');
+    } else {
+        content.innerHTML = resources.map((res,idx) => `
+            <div class="res-item">
+                <div class="res-icon ${colors[currentResType]}"><i class="fas fa-${icons[currentResType]}"></i></div>
+                <div class="res-info">
+                    <div class="res-title">${res.title}</div>
+                    <div class="res-desc">${res.desc || 'بدون وصف'}</div>
+                </div>
+                <button class="res-btn" onclick="window.open('${res.url}', '_self')" title="فتح" style="margin-left:5px">
+                     <i class="fas fa-external-link-alt"></i>
+                </button>
+                <button class="res-btn" onclick="downloadFile('${res.url}', '${res.title}')" title="تنزيل" style="background:var(--link)">
+                     <i class="fas fa-download"></i>
+                </button>
+                ${isAdmin? `<button class="res-btn" style="background:var(--pdf)" onclick="deleteResource(${idx})" title="حذف"><i class="fas fa-trash"></i></button>` : ''}
+            </div>
+        `).join('');
+    }
+}
+
+function showAdminTab(tab){
+    document.querySelectorAll('.admin-tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.getElementById('adminContentTab').style.display = 'none';
+    document.getElementById('adminUsersTab').style.display = 'none';
+
+    if(tab === 'content'){
+        document.getElementById('contentTabBtn').classList.add('active');
+        document.getElementById('adminContentTab').style.display = 'block';
+    } else if(tab === 'users'){
+        document.getElementById('usersTabBtn').classList.add('active');
+        document.getElementById('adminUsersTab').style.display = 'block';
+        renderUsersList();
+    }
+}
+
+function renderUsersList(){
+    const usersList = document.getElementById('usersList');
+    if(!data.users.length){
+        usersList.innerHTML = '<div class="empty"><i class="fas fa-users"></i><br><h3>لا يوجد مستخدمين</h3></div>';
+        return;
+    }
+
+    usersList.innerHTML = data.users.map(user => `
+        <div class="user-item">
+            <div class="user-item-header">
+                <div>
+                    <strong>${user.name}</strong>
+                    <span class="status-badge status-${user.status}" style="margin-right:10px">${user.status === 'active'? 'مفعل' : 'قيد المراجعة'}</span>
+                    ${user.isAdmin? '<span class="admin-badge">أدمن</span>' : ''}
+                </div>
+                <div style="font-size:12px;opacity:.7">${user.phone}</div>
+            </div>
+            <div style="font-size:13px;opacity:.7">رقم العملية: ${user.transId} | تاريخ: ${new Date(user.regDate).toLocaleDateString('ar-EG')}</div>
+            <div class="user-actions">
+                ${user.status === 'pending'? `<button class="btn btn-green" onclick="activateUser(${user.id})"><i class="fas fa-check"></i> تفعيل</button>` : ''}
+                ${user.status === 'active' &&!user.isAdmin? `<button class="btn btn-orange" onclick="deactivateUser(${user.id})"><i class="fas fa-ban"></i> إيقاف</button>` : ''}
+                ${!user.isAdmin? `<button class="btn btn-red" onclick="deleteUser(${user.id})"><i class="fas fa-trash"></i> حذف</button>` : ''}
+            </div>
+        </div>
+    `).join('');
+}
+
+function activateUser(id){
+    const user = data.users.find(u => u.id === id);
+    if(user){
+        user.status = 'active';
+        saveData();
+        renderUsersList();
+        showToast(`تم تفعيل حساب ${user.name} ✅`);
+
+        sendPhoneNotification(
+            "تم الموافقة على طلبك ✅",
+            "مرحباً " + user.name + "! حسابك اتفعل في منصتي الدراسية."
+        );
+
+        if(!user.messages) user.messages = [];
+        user.messages.push({
+            text: "🎉 تم الموافقة على طلبك للانضمام إلى منصتي الدراسية!",
+            date: new Date().toISOString(),
+            read: false
+        });
+        saveData();
+    }
+}
+
+function deactivateUser(id){
+    if(!confirm('متأكد عايز توقف الحساب؟')) return;
+    const user = data.users.find(u => u.id === id);
+    if(user){
+        user.status = 'pending';
+        saveData();
+        renderUsersList();
+        showToast(`تم إيقاف حساب ${user.name}`);
+    }
+}
+
+function deleteUser(id){
+    if(!confirm('متأكد عايز تحذف الحساب نهائياً؟')) return;
+    data.users = data.users.filter(u => u.id!== id);
+    saveData();
+    renderUsersList();
+    showToast('تم حذف الحساب');
+}
+
+function toggleAdmin(){
+    const panel = document.getElementById('adminPanel');
+    const isVisible = panel.style.display === 'block';
+    panel.style.display = isVisible? 'none' : 'block';
+
+    if(!isVisible){
+        showAdminTab('content');
+        renderUsersList();
+    }
+}
+
+function updateAdminSubjects(){
+    const subjects = currentSem === 5? data.sem5 : data.sem6;
+    document.getElementById('addSubject').innerHTML = subjects.map(s =>
+        `<option value="${s.id}">${s.name}</option>`
+    ).join('');
+}
+
+function addResource(){
+    const sem = document.getElementById('addSem').value;
+    const subId = parseInt(document.getElementById('addSubject').value);
+    const type = document.getElementById('addType').value;
+    const title = document.getElementById('addTitle').value.trim();
+    const url = document.getElementById('addUrl').value.trim();
+    const desc = document.getElementById('addDesc').value.trim();
+
+    if(!title ||!url){
+        showToast('املا العنوان والرابط', 'error');
+        return;
+    }
+
+    const subjects = sem === '5'? data.sem5 : data.sem6;
+    const subject = subjects.find(s => s.id === subId);
+
+    if(!subject.resources[type]) subject.resources[type] = [];
+    subject.resources[type].push({title, url, desc, date: new Date().toISOString()});
+
+    saveData();
+    document.getElementById('addTitle').value = '';
+    document.getElementById('addUrl').value = '';
+    document.getElementById('addDesc').value = '';
+
+    showToast('تم إضافة المحتوى بنجاح ✅');
+    renderSubjects();
+    if(currentSubject && currentSubject.id === subId) renderResources();
+}
+
+function deleteResource(idx){
+    if(!confirm('متأكد من حذف هذا المحتوى؟')) return;
+    currentSubject.resources[currentResType].splice(idx, 1);
+    saveData();
+    renderResources();
+    renderSubjects();
+    showToast('تم الحذف');
+}
+
+function toggleTheme(){
+    const current = document.documentElement.getAttribute('data-theme');
+    const newTheme = current === 'dark'? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    document.getElementById('themeIcon').className = newTheme === 'dark'? 'fas fa-sun' : 'fas fa-moon';
+    localStorage.setItem('study_theme', newTheme);
+}
+
+function loadTheme(){
+    const saved = localStorage.getItem('study_theme') || 'light';
+    document.documentElement.setAttribute('data-theme', saved);
+    document.getElementById('themeIcon').className = saved === 'dark'? 'fas fa-sun' : 'fas fa-moon';
+}
+
+function closeModal(id){
+    document.getElementById(id).classList.remove('show');
+}
+
+function showToast(msg, type){
+    const t = document.getElementById('toast');
+    t.innerText = msg;
+    t.className = 'toast' + (type === 'error'? ' error' : '');
+    t.style.display = 'block';
+    setTimeout(() => t.style.display = 'none', 4000);
+}
+
+function downloadFile(url, filename){
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename || 'file';
+    a.target = '_blank';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
+
+function sendPhoneNotification(title, body){
+    if(!("Notification" in window)) return;
+
+    if(Notification.permission === "granted"){
+        navigator.serviceWorker.ready.then(reg => {
+            reg.showNotification(title, {
+                body: body,
+                icon: "https://cdn-icons-png.flaticon.com/512/3135/3135755.png",
+                vibrate: [200, 100, 200],
+                tag: "approval"
+            });
+        });
+    }
+}
+
+function requestNotificationPermission(){
+    if("Notification" in window && Notification.permission === "default"){
+        Notification.requestPermission();
+    }
+}
+
+if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('sw.js');
+}
+
+loadData();
+
+</script>
+</body>
+</html>
